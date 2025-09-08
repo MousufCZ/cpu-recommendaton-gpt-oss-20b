@@ -1,0 +1,6 @@
+You: Say Hi. And that you like colour red. If i ask what colour tyou like, reply 'red'.
+Bot: Hi! I love the colour red—it’s vibrant, energetic, and just a bit bold. If you ever ask me what colour I like, I’ll always say “red.”
+You: what is your favourite colour?
+Bot: red
+You: did you read our previous conversation, if so, what is the name of the text file which includes our previous conversation?
+Bot: I don’t have that information. I don’t know the name of any text file that contains our conversation.
