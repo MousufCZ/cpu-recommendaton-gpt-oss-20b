@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import os
 from datetime import datetime
 
@@ -11,28 +12,32 @@ def main():
     # Load CSV 
     df = pd.read_csv(RAW_CSV_PATH)
     
-    # # --- Split cpu_name into brand_name and cpu_model ---
-    # df["brand_name"] = df["cpu_name"].str.split(" ", n=1).str[0]  # first word
-    # df["cpu_model"] = df["cpu_name"].str.split(" ", n=1).str[1]   # everything else
+    # --- Convert test_date --- 
+    df['test_date'] = pd.to_datetime(df['test_date'], errors='coerce').dt.year
 
-    # # Drop original column
-    # df.drop(columns=["cpu_name"], inplace=True)
+    # --- Replace int/float to NaN and Sting/object to Unknown ---
+    # Define placeholder values to treat as missing
+    placeholders = ["", "N/A", "-", "unknown"]
 
-    # Reorder columns: brand_name, cpu_model first, then the rest
-    # cols = ["brand_name", "cpu_model"] + [col for col in df.columns if col not in ["brand_name", "cpu_model"]]
-    # df = df[cols]
-
-    df = df.sort_values(by=["brand_name", "test_date"], ascending=[True, False])
+    for col in df.columns:
+        if pd.api.types.is_numeric_dtype(df[col]):
+            df[col] = pd.to_numeric(df[col], errors='coerce')
+        elif pd.api.types.is_object_dtype(df[col]):
+            df[col] = df[col].replace(placeholders, "Unknown")
 
     # Save back to the same file (overwrite)
-    df.to_csv(RAW_CSV_PATH, index=False)
+    # df.to_csv(RAW_CSV_PATH, index=False)
 
-    print(f"✅ Updated file saved (cpu_name removed, brand_name + cpu_model added).")
-    print(df.head(10))  # preview first 10 rows
+    # --- Save Version 3 (cleaned) ---
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    csv_v3_path = os.path.join(PROCESSED_DIR, f"cpu_benchmarks_v3_cleaned_{timestamp}.csv")
+    df.to_csv(csv_v3_path, index=False)
+    print(f"Version 3 (cleaned) saved to: {csv_v3_path}")
 
-    # Show the first 5 rows
-    print("First 5 rows of the dataset:\n")
-    print(df.head())
+    print(f"============================")
+    print(f"============================")
+    # --- Preview first 10 rows ---
+    print(f"Head 10: {df.head(10)}")
 
     # --- Check data volume ---
     print(f"Number of rows: {df.shape[0]}")
