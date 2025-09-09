@@ -43,7 +43,7 @@ def main():
     print(f"============================")
     print(f"============================")
     # --- Preview first 10 rows ---
-    print(f"Head 10: {df.head(10)}")
+    print(f"Head 10: {df.hsead(10)}")
 
     # --- Check data volume ---
     print(f"Number of rows: {df.shape[0]}")
