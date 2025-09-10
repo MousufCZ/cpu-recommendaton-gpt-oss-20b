@@ -23,7 +23,7 @@ logging.basicConfig(
 logging.info("Starting document ingestion pipeline...")
 
 # --- Step 1: Load documents ---
-pdf_path = "/Users/mousuf/ProgProj/oss-hackathon/OssCode/data/documents/understanding_server_cpus_and_how_to_choose_server_cpu.docx"
+pdf_path = "/Users/mousuf/ProgProj/oss-hackathon/OssCode/data/documents/understanding_server_cpus_and_how_to_choose_server_cpu.pdf"
 csv_path = "/Users/mousuf/ProgProj/oss-hackathon/OssCode/data/documents/cpu_text_chunks_2025-09-10_16-38-35.csv"
 
 logging.info("Loading PDF and CSV documents...")
