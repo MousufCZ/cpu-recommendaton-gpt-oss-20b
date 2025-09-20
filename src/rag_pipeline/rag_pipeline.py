@@ -48,10 +48,10 @@ for i, doc in enumerate(docs_split):
 
 # --- Step 4: Create embeddings ---
 logging.info("Creating embeddings...")
-embeddings = OllamaEmbeddings(model="gpt-oss:20b")
+embeddings = OllamaEmbeddings(model="alibayram/smollm3:latest")
 
 # --- Step 5: Store in Chroma ---
-chroma_path = "data/chroma_db"
+chroma_path = "data/chroma_db/smollm3"
 os.makedirs(chroma_path, exist_ok=True)
 client = chromadb.PersistentClient(path=chroma_path)
 collection = client.get_or_create_collection(name="cpu_information_docs")

@@ -2,11 +2,11 @@ import chromadb
 from langchain_ollama import OllamaEmbeddings
 
 # --- Step 1: Connect to Chroma and load collection ---
-client = chromadb.PersistentClient(path="data/chroma_db")
+client = chromadb.PersistentClient(path="data/chroma_db/smollm3")
 collection = client.get_collection(name="cpu_information_docs")
 
 # --- Step 2: Initialize embeddings model ---
-embeddings = OllamaEmbeddings(model="gpt-oss:20b")
+embeddings = OllamaEmbeddings(model="alibayram/smollm3:latest")
 
 # --- Step 3: Prepare your query ---
 query = "Which CPU is best for a server with high multi-thread performance?"
