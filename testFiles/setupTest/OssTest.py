@@ -4,7 +4,7 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
 # Initialize Ollama with the model you want
-llm = OllamaLLM(model="gpt-oss:20b")
+llm = OllamaLLM(model="alibayram/smollm3:latest")
 
 
 

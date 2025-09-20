@@ -41,7 +41,7 @@ def main():
         memory = ConversationBufferMemory(return_messages=True)
 
     # Initialize LLM and conversation chain
-    llm = OllamaLLM(model="gpt-oss:20b")
+    llm = OllamaLLM(model="alibayram/smollm3:latest")
     conversation = ConversationChain(
         llm=llm,
         memory=memory,

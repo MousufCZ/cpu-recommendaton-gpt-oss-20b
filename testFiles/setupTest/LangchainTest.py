@@ -6,7 +6,7 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
 # Initialize Ollama with the model I want
-llm = OllamaLLM(model="gpt-oss:20b")
+llm = OllamaLLM(model="alibayram/smollm3:latest")
 
 # Define a template
 template = "You are a helpful assistant. Translate the following English text to French: {text}"
