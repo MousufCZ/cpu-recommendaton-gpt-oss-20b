@@ -2478,3 +2478,30 @@ Test Query 1: Compare the CPU_mark and give me the top 3 names. Ensure the CPU i
 2025-09-21 03:22:05,412 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
 2025-09-21 03:22:12,792 - INFO - RAG inference pipeline completed successfully!
 2025-09-21 03:22:12,792 - INFO - Loaded from ChromaDB: data/chroma_db/smollm3
+2025-09-21 03:42:42,048 - INFO - Starting RAG inference/testing pipeline...
+2025-09-21 03:42:42,048 - INFO - Loading ChromaDB from data/chroma_db/smollm3...
+2025-09-21 03:42:42,048 - INFO - Using device: cpu
+2025-09-21 03:42:43,822 - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-09-21 03:42:45,520 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-21 03:42:45,592 - INFO - Loaded 1083 documents from ChromaDB
+2025-09-21 03:42:45,592 - INFO - Initializing Ollama SmolLM3 for text generation...
+2025-09-21 03:42:47,750 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 03:42:51,627 - INFO - Ollama SmolLM3 test: <think>
+
+</think>
+"Ollama is working!" means that Ollama, a fictional character or AI assistant, has been activated and is now operational. It's like saying "I'm online!" when you're using a computer or smartphone.
+
+In this context, if someone says "Ollama is working!", it could mean:
+
+1. The person is referring to an AI assistant named Ollama that they are interacting with.
+2. They might be talking about a fictional character in a game or story who has been activated.
+3. It's possible the person is using Ollama as a code name for something else, like a secret project.
+
+Overall, it means that whatever Ollama represents (whether real or imaginary) is now functioning and ready to assist or respond to requests.
+2025-09-21 03:42:51,627 - INFO - Building RAG chain: HF embeddings → ChromaDB → Ollama generation...
+2025-09-21 03:42:51,628 - INFO - Testing full RAG pipeline...
+2025-09-21 03:42:51,629 - INFO - 
+Test Query 1: Compare the CPU_mark and give me the top 3 names. Ensure the CPU is less than 3 years.
+2025-09-21 03:42:53,222 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 03:42:59,695 - INFO - RAG inference pipeline completed successfully!
+2025-09-21 03:42:59,696 - INFO - Loaded from ChromaDB: data/chroma_db/smollm3
