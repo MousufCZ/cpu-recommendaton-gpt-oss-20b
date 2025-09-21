@@ -2403,3 +2403,78 @@
 2025-09-20 15:30:15,168 - INFO - Added 1070/1083 chunks to Chroma.
 2025-09-20 15:30:16,095 - INFO - Added 1080/1083 chunks to Chroma.
 2025-09-20 15:30:16,372 - INFO - Pipeline completed successfully!
+2025-09-21 03:03:33,904 - INFO - Starting mixed RAG pipeline: Hugging Face embeddings + Ollama generation...
+2025-09-21 03:03:33,904 - INFO - Loading PDF and CSV documents...
+2025-09-21 03:03:36,862 - INFO - Loaded 836 documents.
+2025-09-21 03:03:36,862 - INFO - Splitting documents into chunks of 800 characters with 200 overlap...
+2025-09-21 03:03:36,891 - INFO - Created 1083 text chunks.
+2025-09-21 03:03:36,891 - INFO - Initializing Hugging Face embeddings (all-MiniLM-L6-v2)...
+2025-09-21 03:03:36,891 - INFO - Using device: cpu
+2025-09-21 03:03:41,840 - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-09-21 03:03:47,467 - INFO - Hugging Face embedding dimension: 384 (expected: 384)
+2025-09-21 03:03:47,468 - INFO - Cleared old ChromaDB at data/chroma_db/smollm3
+2025-09-21 03:03:47,468 - INFO - Creating ChromaDB collection with Hugging Face embeddings...
+2025-09-21 03:03:47,480 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-21 03:03:56,831 - INFO - ChromaDB created with 1083 documents (384-dim vectors)
+2025-09-21 03:06:56,623 - INFO - Starting RAG inference/testing pipeline...
+2025-09-21 03:06:56,624 - INFO - Loading ChromaDB from data/chroma_db/smollm3...
+2025-09-21 03:06:56,624 - INFO - Using device: cpu
+2025-09-21 03:06:58,061 - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-09-21 03:06:59,591 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-21 03:06:59,628 - INFO - Loaded 1083 documents from ChromaDB
+2025-09-21 03:06:59,628 - INFO - Initializing Ollama SmolLM3 for text generation...
+2025-09-21 03:06:59,640 - ERROR - Ollama connection failed: [Errno 61] Connection refused
+2025-09-21 03:06:59,640 - INFO - Make sure 'ollama serve' is running and model is pulled
+2025-09-21 03:10:27,258 - INFO - Starting RAG inference/testing pipeline...
+2025-09-21 03:10:27,258 - INFO - Loading ChromaDB from data/chroma_db/smollm3...
+2025-09-21 03:10:27,258 - INFO - Using device: cpu
+2025-09-21 03:10:28,463 - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-09-21 03:10:30,029 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-21 03:10:30,065 - INFO - Loaded 1083 documents from ChromaDB
+2025-09-21 03:10:30,065 - INFO - Initializing Ollama SmolLM3 for text generation...
+2025-09-21 03:10:32,223 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 03:10:35,490 - INFO - Ollama SmolLM3 test: <think>
+
+</think>
+"Ollama is working!" means that Ollama, a fictional character or AI assistant, is currently active and engaged in performing its functions. It could be used to indicate that Ollama has received an input, is processing information, or is ready to provide assistance.
+
+For example:
+
+- If you ask Ollama for help with a task, it might respond with "Ollama is working!" to let you know it's on the job.
+- You can also use this phrase when interacting with Ollama in a game or simulation where its actions are dependent on your inputs. 
+
+Remember that without specific context about what Ollama does, this statement remains quite general and open-ended.
+2025-09-21 03:10:35,491 - INFO - Building RAG chain: HF embeddings → ChromaDB → Ollama generation...
+2025-09-21 03:10:35,493 - INFO - Testing full RAG pipeline...
+2025-09-21 03:10:35,493 - INFO - 
+Test Query 1: What are the key factors for choosing a server CPU?
+2025-09-21 03:10:36,924 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 03:10:47,521 - INFO - 
+Test Query 2: Recommend a CPU for virtualization workloads under 200W
+2025-09-21 03:10:48,976 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 03:10:55,444 - INFO - 
+Test Query 3: Compare Intel Xeon vs AMD EPYC for database servers
+2025-09-21 03:10:57,197 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 03:11:10,898 - INFO - RAG inference pipeline completed successfully!
+2025-09-21 03:11:10,899 - INFO - Loaded from ChromaDB: data/chroma_db/smollm3
+2025-09-21 03:21:57,245 - INFO - Starting RAG inference/testing pipeline...
+2025-09-21 03:21:57,245 - INFO - Loading ChromaDB from data/chroma_db/smollm3...
+2025-09-21 03:21:57,245 - INFO - Using device: cpu
+2025-09-21 03:21:59,006 - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-09-21 03:22:00,576 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-21 03:22:00,647 - INFO - Loaded 1083 documents from ChromaDB
+2025-09-21 03:22:00,647 - INFO - Initializing Ollama SmolLM3 for text generation...
+2025-09-21 03:22:01,557 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 03:22:03,835 - INFO - Ollama SmolLM3 test: <think>
+
+</think>
+"Ollama is working!" means that Ollama, a fictional character or AI assistant, has been activated and is now operational. It's like saying "I'm online!" when you're using a computer or smartphone.
+
+In this case, if we assume Ollama is an AI assistant designed to help with tasks such as answering questions, providing information, or assisting in various activities, then the statement indicates that it has been activated and is ready to assist.
+2025-09-21 03:22:03,835 - INFO - Building RAG chain: HF embeddings → ChromaDB → Ollama generation...
+2025-09-21 03:22:03,836 - INFO - Testing full RAG pipeline...
+2025-09-21 03:22:03,836 - INFO - 
+Test Query 1: Compare the CPU_mark and give me the top 3 names. Ensure the CPU is less than 3 years.
+2025-09-21 03:22:05,412 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 03:22:12,792 - INFO - RAG inference pipeline completed successfully!
+2025-09-21 03:22:12,792 - INFO - Loaded from ChromaDB: data/chroma_db/smollm3

@@ -2,9 +2,14 @@ import logging
 import tiktoken
 from langchain_community.document_loaders import PyPDFLoader, CSVLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_ollama import OllamaEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_ollama import ChatOllama
+from langchain_community.vectorstores import Chroma
+from langchain.chains import retrieval_qa
 import chromadb
 import os
+import shutil
+import torch
 
 # --- Setup logging ---
 log_dir = "logs"
@@ -20,7 +25,7 @@ logging.basicConfig(
         logging.StreamHandler()         # still print to console
     ]
 )
-logging.info("Starting document ingestion pipeline...")
+logging.info("Starting mixed RAG pipeline: Hugging Face embeddings + Ollama generation...")
 
 # --- Step 1: Load documents ---
 pdf_path = "/Users/mousuf/ProgProj/oss-hackathon/OssCode/data/documents/understanding_server_cpus_and_how_to_choose_server_cpu.pdf"
@@ -40,30 +45,39 @@ splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=c
 docs_split = splitter.split_documents(docs)
 logging.info(f"Created {len(docs_split)} text chunks.")
 
-# --- Step 3: Count tokens ---
-encoder = tiktoken.get_encoding("gpt2")
-for i, doc in enumerate(docs_split):
-    num_tokens = len(encoder.encode(doc.page_content))
-    logging.info(f"Chunk {i} uses {num_tokens} tokens.")
+# --- Step 3: Setup Hugging Face Embeddings (384 dimensions) ---
+logging.info("Initializing Hugging Face embeddings (all-MiniLM-L6-v2)...")
+device = "cuda" if torch.cuda.is_available() else "cpu"
+logging.info(f"Using device: {device}")
 
-# --- Step 4: Create embeddings ---
-logging.info("Creating embeddings...")
-embeddings = OllamaEmbeddings(model="alibayram/smollm3:latest")
+embeddings = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2",  # 384 dimensions
+    model_kwargs={'device': device},
+    encode_kwargs={'normalize_embeddings': True}
+)
 
-# --- Step 5: Store in Chroma ---
+# Test embedding dimensions
+test_embedding = embeddings.embed_query("Test CPU query")
+logging.info(f"Hugging Face embedding dimension: {len(test_embedding)} (expected: 384)")
+
+
+# --- Step 4: Setup ChromaDB with 384-dim embeddings ---
 chroma_path = "data/chroma_db/smollm3"
+try:
+    if os.path.exists(chroma_path):
+        shutil.rmtree(chroma_path)
+        logging.info(f"Cleared old ChromaDB at {chroma_path}")
+except Exception as e:
+    logging.warning(f"Could not clear old ChromaDB: {e}")
+
 os.makedirs(chroma_path, exist_ok=True)
-client = chromadb.PersistentClient(path=chroma_path)
-collection = client.get_or_create_collection(name="cpu_information_docs")
 
-logging.info("Adding chunks to Chroma database...")
-for i, doc in enumerate(docs_split):
-    collection.add(
-        ids=[str(i)],
-        documents=[doc.page_content],
-        metadatas=[doc.metadata]
-    )
-    if (i+1) % 10 == 0:
-        logging.info(f"Added {i+1}/{len(docs_split)} chunks to Chroma.")
+logging.info("Creating ChromaDB collection with Hugging Face embeddings...")
+vectorstore = Chroma.from_documents(
+    documents=docs_split,
+    embedding=embeddings,
+    collection_name="cpu_docs_smollm3_ollama",
+    persist_directory=chroma_path
+)
 
-logging.info("Pipeline completed successfully!")
+logging.info(f"ChromaDB created with {len(docs_split)} documents (384-dim vectors)")
