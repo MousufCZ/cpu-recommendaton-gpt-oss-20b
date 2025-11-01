@@ -2505,3 +2505,53 @@ Test Query 1: Compare the CPU_mark and give me the top 3 names. Ensure the CPU i
 2025-09-21 03:42:53,222 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
 2025-09-21 03:42:59,695 - INFO - RAG inference pipeline completed successfully!
 2025-09-21 03:42:59,696 - INFO - Loaded from ChromaDB: data/chroma_db/smollm3
+2025-09-21 03:48:58,251 - INFO - Starting RAG inference/testing pipeline...
+2025-09-21 03:48:58,251 - INFO - Loading ChromaDB from data/chroma_db/smollm3...
+2025-09-21 03:48:58,251 - INFO - Using device: cpu
+2025-09-21 03:49:00,089 - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-09-21 03:49:01,955 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-21 03:49:02,027 - INFO - Loaded 1083 documents from ChromaDB
+2025-09-21 03:49:02,027 - INFO - Initializing Ollama SmolLM3 for text generation...
+2025-09-21 03:49:04,214 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 03:49:06,609 - INFO - Ollama SmolLM3 test: <think>
+
+</think>
+"Ollama is working!" means that Ollama, a fictional character or AI assistant, has been activated and is now operational. It's like saying "I'm online" when talking about an internet connection, but for this specific character or system.
+
+If you're referring to me as the AI assistant, then I am indeed working! I can help with various tasks such as answering questions, providing information, generating text, translating languages, and more. Just let me know how I can assist you today!
+2025-09-21 03:49:06,609 - INFO - Building RAG chain: HF embeddings → ChromaDB → Ollama generation...
+2025-09-21 03:49:06,611 - INFO - Testing full RAG pipeline...
+2025-09-21 03:49:06,611 - INFO - 
+Test Query 1: Compare the CPU_mark and give me the top 3 names. Ensure the CPU is less than 3 years.
+2025-09-21 03:49:08,220 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 03:49:13,184 - INFO - RAG inference pipeline completed successfully!
+2025-09-21 03:49:13,184 - INFO - Loaded from ChromaDB: data/chroma_db/smollm3
+2025-09-21 04:14:52,844 - INFO - Starting RAG inference/testing pipeline...
+2025-09-21 04:14:52,845 - INFO - Loading ChromaDB from data/chroma_db/smollm3...
+2025-09-21 04:14:52,845 - INFO - Using device: cpu
+2025-09-21 04:14:54,790 - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-09-21 04:14:56,598 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-21 04:14:56,692 - INFO - Loaded 1083 documents from ChromaDB
+2025-09-21 04:14:56,692 - INFO - Initializing Ollama SmolLM3 for text generation...
+2025-09-21 04:14:58,860 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 04:15:03,127 - INFO - Ollama SmolLM3 test: <think>
+
+</think>
+"Ollama is working!" means that Ollama, a fictional character or AI assistant, is currently active and engaged in performing its functions. This phrase could be used to indicate that the system is ready for user interaction, processing tasks, or providing assistance as requested.
+
+For example:
+
+- If you're using an AI chatbot named Ollama, this message would mean it's online and waiting for your input.
+- In a game where Ollama serves as a guide or character, "Ollama is working!" could signal that the guide is active and ready to help navigate through levels or provide information.
+
+Remember, since Ollama isn't an actual person but rather a fictional entity, it's important not to confuse this phrase with real-life situations where someone named Ollama might be actively engaged in work.
+2025-09-21 04:15:03,127 - INFO - Building RAG chain: HF embeddings → ChromaDB → Ollama generation...
+2025-09-21 04:15:03,127 - INFO - Testing full RAG pipeline...
+2025-09-21 04:15:03,127 - INFO - 
+Test Query 1: Compare the CPU_mark and give me the top 3 names. Ensure the CPU is less than 3 years.
+2025-09-21 04:15:04,742 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 04:15:11,242 - INFO - 
+Test Query 2: What are the key factors for choosing a server CPU?
+2025-09-21 04:15:12,556 - INFO - HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2025-09-21 04:15:21,330 - INFO - RAG inference pipeline completed successfully!
+2025-09-21 04:15:21,330 - INFO - Loaded from ChromaDB: data/chroma_db/smollm3

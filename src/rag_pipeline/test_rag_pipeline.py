@@ -85,8 +85,8 @@ qa_chain = RetrievalQA.from_chain_type(
 # --- Step 4: Test the Full Pipeline ---
 logging.info("Testing full RAG pipeline...")
 test_queries = [
-    "Compare the CPU_mark and give me the top 3 names. Ensure the CPU is less than 3 years."
-    # "What are the key factors for choosing a server CPU?",
+    "Compare the CPU_mark and give me the top 3 names. Ensure the CPU is less than 3 years.",
+    "What are the key factors for choosing a server CPU?"
     # "Recommend a CPU for virtualization workloads under 200W",
     # "Compare Intel Xeon vs AMD EPYC for database servers"
 ]
