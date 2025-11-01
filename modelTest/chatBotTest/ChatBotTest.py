@@ -3,8 +3,7 @@ from langchain.chains import ConversationChain
 from langchain_ollama import OllamaLLM
 
 def main():
-    # Pick a model you’ve already pulled with Ollama
-    llm = OllamaLLM(model="gpt-oss:20b")  # or "llama3", "mistral", etc.
+    llm = OllamaLLM(model="alibayram/smollm3:latest")
     memory = ConversationBufferMemory(return_messages=True)
 
     conversation = ConversationChain(
@@ -25,7 +24,7 @@ def main():
                 for msg in memory.chat_memory.messages:
                     role = "You" if msg.type == "human" else "Bot"
                     f.write(f"{role}: {msg.content}\n")
-            print("💾 Conversation saved to conversation_log.txt")
+            print("Conversation saved to conversation_log.txt")
             break
 
         response = conversation.predict(input=user_input)

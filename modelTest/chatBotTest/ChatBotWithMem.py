@@ -16,12 +16,11 @@ def load_previous_memory(filename):
     return memory
 
 def main():
-    # Hardcoded folder path to save conversations
-    logs_folder = "/Users/mousuf/ProgProj/oss-hackathon/OssCode/testFiles/chatBotTest/ChatLogs"  # <-- change this to your desired folder
+    logs_folder = "/Users/mousuf/ProgProj/oss-hackathon/OssCode/modelTest/chatBotTest/ChatLogs"  # <-- change this to your desired folder
     os.makedirs(logs_folder, exist_ok=True)
     print(f"Conversations will be saved in: {logs_folder}\n")
 
-    # Ask user if they want to continue a previous conversation
+    # Ask if I want to continue a previous conversation
     memory = None
     prev_files = [f for f in os.listdir(logs_folder) if f.startswith("conversation_") and f.endswith(".txt")]
     prev_files.sort()
@@ -76,7 +75,7 @@ def main():
                 for msg in memory.chat_memory.messages:
                     role = "You" if msg.type == "human" else "Bot"
                     f.write(f"{role}: {msg.content}\n")
-            print(f"💾 Conversation saved to {filename}")
+            print(f"Conversation saved to {filename}")
 
 if __name__ == "__main__":
     main()

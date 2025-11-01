@@ -5,7 +5,7 @@ import warnings
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
-# Initialize Ollama with the model I want
+# Initialise Ollama with the model I want
 llm = OllamaLLM(model="alibayram/smollm3:latest")
 
 # Define a template
