@@ -1,12 +1,12 @@
 import logging
 from langchain_ollama import ChatOllama
-from langchain.chains import RetrievalQA  # ← Fixed import
+from langchain.chains import RetrievalQA 
 from langchain_community.vectorstores import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings  # ← Same embeddings for consistency
+from langchain_huggingface import HuggingFaceEmbeddings 
 import torch
 import os
 
-# --- Setup logging (consistent with rag_pipeline.py) ---
+# --- Setup logging ---
 log_dir = "logs"
 os.makedirs(log_dir, exist_ok=True)
 log_file = os.path.join(log_dir, "cpu_rag_pipeline.log")
@@ -16,36 +16,33 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(log_file),  # Appends to same log file
-        logging.StreamHandler()         # Still print to console
+        logging.FileHandler(log_file),
+        logging.StreamHandler()   
     ]
 )
 logging.info("Starting RAG inference/testing pipeline...")
 
 # --- Step 1: Load existing ChromaDB and embeddings ---
-chroma_path = "data/chroma_db/smollm3"  # ← Same path as rag_pipeline.py
-collection_name = "cpu_docs_smollm3_ollama"  # ← Same name as rag_pipeline.py
+chroma_path = "data/chroma_db/smollm3"  
+collection_name = "cpu_docs_smollm3_ollama" 
 
 logging.info(f"Loading ChromaDB from {chroma_path}...")
 try:
-    # Load the SAME embeddings used for ingestion (critical for dimension matching!)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     logging.info(f"Using device: {device}")
     
     embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2",  # Same as ingestion
+        model_name="sentence-transformers/all-MiniLM-L6-v2", 
         model_kwargs={'device': device},
         encode_kwargs={'normalize_embeddings': True}
     )
     
-    # Load existing vectorstore
     vectorstore = Chroma(
         persist_directory=chroma_path,
         embedding_function=embeddings,
         collection_name=collection_name
     )
     
-    # Verify loaded documents
     num_docs = vectorstore._collection.count()
     logging.info(f"Loaded {num_docs} documents from ChromaDB")
     
@@ -57,12 +54,11 @@ except Exception as e:
 # --- Step 2: Setup Ollama SmolLM3 for Generation ---
 logging.info("Initializing Ollama SmolLM3 for text generation...")
 llm = ChatOllama(
-    model="alibayram/smollm3:latest",  # Your downloaded Ollama model
-    temperature=0.1,  # Low for factual responses
-    base_url="http://localhost:11434"  # Ollama server
+    model="alibayram/smollm3:latest", 
+    temperature=0.1, 
+    base_url="http://localhost:11434"  
 )
 
-# Test Ollama connection
 try:
     test_response = llm.invoke("Say 'Ollama is working!'")
     logging.info(f"Ollama SmolLM3 test: {test_response.content}")
@@ -74,12 +70,12 @@ except Exception as e:
 # --- Step 3: Create RAG Chain (The Magic!) ---
 logging.info("Building RAG chain: HF embeddings → ChromaDB → Ollama generation...")
 qa_chain = RetrievalQA.from_chain_type(
-    llm=llm,  # Ollama SmolLM3 for generation
-    chain_type="stuff",  # Stuff retrieved docs into prompt
+    llm=llm, 
+    chain_type="stuff", 
     retriever=vectorstore.as_retriever(
-        search_kwargs={"k": 3}  # Retrieve top 3 relevant chunks
+        search_kwargs={"k": 3}
     ),
-    return_source_documents=True  # For debugging
+    return_source_documents=True 
 )
 
 # --- Step 4: Test the Full Pipeline ---
@@ -87,8 +83,6 @@ logging.info("Testing full RAG pipeline...")
 test_queries = [
     "Compare the CPU_mark and give me the top 3 names. Ensure the CPU is less than 3 years.",
     "What are the key factors for choosing a server CPU?"
-    # "Recommend a CPU for virtualization workloads under 200W",
-    # "Compare Intel Xeon vs AMD EPYC for database servers"
 ]
 
 for i, query in enumerate(test_queries, 1):

@@ -19,7 +19,6 @@ def main():
         if user_input.lower() in ["exit", "quit"]:
             print("Goodbye!")
 
-            # Save conversation history when ending
             with open("conversation_log.txt", "w", encoding="utf-8") as f:
                 for msg in memory.chat_memory.messages:
                     role = "You" if msg.type == "human" else "Bot"

@@ -12,7 +12,6 @@ def format_value(value, col):
 
     try:
         num = float(value)
-        # Strip .0 for selected integer-like columns
         if col in ["age", "cores", "test_date"] and num.is_integer():
             return str(int(num))
         return str(num)

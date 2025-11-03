@@ -5,10 +5,8 @@ import warnings
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
-# Initialise Ollama with the model I want
 llm = OllamaLLM(model="alibayram/smollm3:latest")
 
-# Define a template
 template = "You are a helpful assistant. Translate the following English text to French: {text}"
 
 prompt = PromptTemplate(
@@ -16,9 +14,7 @@ prompt = PromptTemplate(
     template=template,
 )
 
-# Create a chain
 chain = LLMChain(llm=llm, prompt=prompt)
 
-# Run chain
 result = chain.run("The drone is flying over a red rocky landscape.")
 print(result)

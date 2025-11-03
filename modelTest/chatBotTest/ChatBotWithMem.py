@@ -20,7 +20,6 @@ def main():
     os.makedirs(logs_folder, exist_ok=True)
     print(f"Conversations will be saved in: {logs_folder}\n")
 
-    # Ask if I want to continue a previous conversation
     memory = None
     prev_files = [f for f in os.listdir(logs_folder) if f.startswith("conversation_") and f.endswith(".txt")]
     prev_files.sort()
@@ -35,11 +34,9 @@ def main():
             memory = load_previous_memory(filename)
             print(f"Loaded conversation from {filename}")
     
-    # If no file selected, start with fresh memory
     if memory is None:
         memory = ConversationBufferMemory(return_messages=True)
 
-    # Initialize LLM and conversation chain
     llm = OllamaLLM(model="alibayram/smollm3:latest")
     conversation = ConversationChain(
         llm=llm,
@@ -67,7 +64,6 @@ def main():
         print("Exiting chat...")
 
     finally:
-        # Save conversation only once, at the end of the session
         if memory and memory.chat_memory.messages:
             timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
             filename = os.path.join(logs_folder, f"conversation_{timestamp}.txt")

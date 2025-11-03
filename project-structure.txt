@@ -1,0 +1,63 @@
+Project structure dump for: /Users/mousuf/ProgProj/006_oss-hackathon/OssCode
+Generated: 2025-11-02 19:50:56
+Total lines of code in .py scripts: 792
+
+/Users/mousuf/ProgProj/006_oss-hackathon/OssCode
+├── data
+│   ├── data/chroma_db
+│   │   └── data/chroma_db/smollm3
+│   │       ├── data/chroma_db/smollm3/e42619d5-7190-4a1d-91a0-3a264055b3ba
+│   │       │   ├── data/chroma_db/smollm3/e42619d5-7190-4a1d-91a0-3a264055b3ba/data_level0.bin
+│   │       │   ├── data/chroma_db/smollm3/e42619d5-7190-4a1d-91a0-3a264055b3ba/header.bin
+│   │       │   ├── data/chroma_db/smollm3/e42619d5-7190-4a1d-91a0-3a264055b3ba/index_metadata.pickle
+│   │       │   ├── data/chroma_db/smollm3/e42619d5-7190-4a1d-91a0-3a264055b3ba/length.bin
+│   │       │   └── data/chroma_db/smollm3/e42619d5-7190-4a1d-91a0-3a264055b3ba/link_lists.bin
+│   │       └── data/chroma_db/smollm3/chroma.sqlite3
+│   ├── data/documents
+│   │   ├── data/documents/cpu_text_chunks_2025-09-10_16-38-35.csv
+│   │   └── data/documents/understanding_server_cpus_and_how_to_choose_server_cpu.pdf
+│   ├── data/featured
+│   │   ├── data/featured/cpu_benchmarks_v4_feature_engineering_2025-09-08_21-41-12.csv
+│   │   └── data/featured/cpu_benchmarks_v5_corrected_testdate_2025-09-08_23-34-43.csv
+│   ├── data/final
+│   │   └── data/final/cpu_benchmarks_final.csv
+│   ├── data/ml_ready
+│   │   └── data/ml_ready/cpu_benchmarks_v4_ml_ready_scaled_custom_2025-09-08_23-37-52.csv
+│   ├── data/processed
+│   │   ├── data/processed/cpu_benchmarks_v1_2025-09-08_17-34-24.csv
+│   │   ├── data/processed/cpu_benchmarks_v2_server_2025-09-08_17-34-24.csv
+│   │   ├── data/processed/cpu_benchmarks_v3_cleaned_2025-09-08_20-52-44.csv
+│   │   └── data/processed/cpu_benchmarks_v4_feature_engineering_2025-09-08_21-41-12.csv
+│   └── data/raw
+│       └── data/raw/cpu_benchmark_v1.csv
+├── documentation
+│   └── documentation/folder_strcuture_script.py
+├── logs
+│   └── logs/cpu_rag_pipeline.log
+├── modelTest
+│   ├── modelTest/chatBotTest
+│   │   ├── modelTest/chatBotTest/ChatLogs
+│   │   │   ├── modelTest/chatBotTest/ChatLogs/conversation_2025-09-07_21-41-37.txt
+│   │   │   ├── modelTest/chatBotTest/ChatLogs/conversation_2025-09-07_21-44-39.txt
+│   │   │   └── modelTest/chatBotTest/ChatLogs/conversation_2025-09-20_14-46-45.txt
+│   │   ├── modelTest/chatBotTest/ChatBotTest.py
+│   │   └── modelTest/chatBotTest/ChatBotWithMem.py
+│   ├── modelTest/setupTest
+│   │   ├── modelTest/setupTest/LangchainMemoryBuffer.py
+│   │   ├── modelTest/setupTest/LangchainTest.py
+│   │   └── modelTest/setupTest/OssTest.py
+├── src
+│   ├── src/build_features
+│   │   └── src/build_features/build_features.py
+│   ├── src/data
+│   │   ├── src/data/convert_csv_for_rag.py
+│   │   ├── src/data/fix_test_date.py
+│   │   ├── src/data/prepare_ml_data.py
+│   │   └── src/data/preprocess_data.py
+│   ├── src/rag_pipeline
+│   │   ├── src/rag_pipeline/check_chroma_collections.py
+│   │   ├── src/rag_pipeline/rag_pipeline.py
+│   │   └── src/rag_pipeline/test_rag_pipeline.py
+├── project-structure.txt
+├── README.md
+└── requirements.txt
